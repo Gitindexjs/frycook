@@ -25,9 +25,11 @@ def get_links(url: str) -> list:
     return links
 
 def link_to_domain(link: str) -> str:
-    domain = link.split("/")[2]
-    if "?" in domain:
-        domain = domain.split("?")[0]
-    if "#" in domain:
-        domain = domain.split("#")[0]
-    return domain
+    try:
+        domain = link.split("/")[2]
+        if "?" in domain:
+            domain = domain.split("?")[0]
+        if "#" in domain:
+            domain = domain.split("#")[0]
+        return domain
+    except IndexError: return None
